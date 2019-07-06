@@ -7,12 +7,12 @@
       3. 마감기한 만료 알림
       4. 완료 체크
 <div>
-<img src="./image/todolist.png" width="350"></img>
+<img src="./image/todolist.png" width="400"></img>
 </div>
 <div>
-<img src="./image/insert.png" width="350"></img>
+<img src="./image/insert.png" width="400"></img>
 </div>
 <div>
-<img src="./image/login.PNG" width="350"></img>
+<img src="./image/login.png" width="400"></img>
 </div>
 
