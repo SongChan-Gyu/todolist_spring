@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="sample">
+      
+      <select id="sample.openModify" resultType="hashmap" parameterType="hashmap">
+      <![CDATA[
+      SELECT *
+      FROM list
+      WHERE
+      id= #{IDX}
+      ]]>
+      </select>
+      
+      <delete id="sample.deletetoDo" parameterType="hashmap">
+      <![CDATA[
+      	delete from list 
+      	where id= #{IDX}
+      ]]>
+      
+      </delete>
+      
+      <insert id="sample.doSignUp" parameterType="hashmap">
+      <![CDATA[
+      	insert into user(name,id,password)
+      	values(#{name},#{id},#{password})
+      ]]>
+      
+      </insert>
+      
+      <update id="sample.changePrior" parameterType="hashmap">
+      <![CDATA[
+      	update list
+      	set priority=#{priority}
+      	where id=#{IDX}
+      ]]>
+      </update>
+      <update id="sample.doModify" parameterType="hashmap">
+      <![CDATA[
+      	update list
+      	set title=#{title}, content=#{content}, times=#{day}
+      	where id=#{IDX}
+      ]]>
+      
+      </update>
+      
+      <update id="sample.doChecked" parameterType="hashmap">
+      <![CDATA[
+      	update list
+      	set chacked=#{checked}
+      	where id=#{IDX} and user_id=#{ID}
+      ]]>
+      
+      </update>
+      
+      
+      <insert id="sample.insertUserID" parameterType="hashmap">
+      <![CDATA[
+      INSERT INTO USER(name,tel,id,password)
+      values (#{NAME},#{TEL},#{ID},#{PASSWORD})
+      
+      ]]>
+      
+      </insert>
+      
+      <select id="sample.selectUserID" resultType="hashmap" parameterType="hashmap">
+      <![CDATA[
+      SELECT COUNT(ID) AS RESULT
+      FROM USER
+      WHERE
+      ID= #{ID}
+      ]]>
+      </select>
+      
+      <select id="sample.selectMax" resultType="int">
+      <![CDATA[
+      select max(priority) from list;
+      ]]>
+      </select>
+      
+      <select id="sample.notification" resultType="hashmap" parameterType="String">
+      <![CDATA[
+      	select *
+      	from list
+      	where user_id=#{id} and NOW()>= times and status="todo"
+      	order by priority asc
+      ]]>
+      </select>
+      <update id="sample.chNotification" parameterType="String">
+      <![CDATA[
+      	update list
+      	set status="terminate"
+      	where user_id=#{id} and NOW()>= times
+      ]]>
+      </update>
+      
+      <select id="sample.selectUserPWD" resultType="hashmap" parameterType="hashmap">
+      <![CDATA[
+      SELECT COUNT(ID) AS RESULT
+      FROM USER
+      WHERE
+      ID= #{ID} AND PASSWORD = #{PWD}
+      ]]>
+      </select>
+      
+      <select id="sample.selectList" resultType="hashmap" parameterType="hashmap">
+      <![CDATA[
+      SELECT *
+      FROM list
+      WHERE
+      user_id= #{session}
+      order by priority asc
+      ]]>
+      </select>
+      
+      <insert id="sample.insertList" parameterType="hashmap">
+      	<![CDATA[
+		insert into list(title, content,times, priority, user_id)
+		values(#{title},#{content},#{day},#{priority}, #{ID})
+      
+      	]]>
+      
+      </insert>
+      
+      <select id="sample.selectBoardList" resultType="hashmap" parameterType="hashmap" >
+        <![CDATA[
+       SELECT
+           (
+               SELECT
+                   COUNT(*) 
+               FROM 
+                   TB_BOARD
+               WHERE 
+                   DEL_GB = 'N'
+           ) AS TOTAL_COUNT ,
+           IDX,
+           TITLE,
+           HIT_CNT,
+           CREA_DTM
+       FROM
+           TB_BOARD
+       WHERE
+           DEL_GB= 'N'
+       ORDER BY 
+           IDX DESC
+       LIMIT #{START} , #{END} 
+   ]]>
+     </select>
+     
+     <select id="sample.selectBoard" parameterType="hashmap" resultType="hashmap">
+     	<![CDATA[
+     		SELECT
+     			*
+     		FROM
+     			TB_BOARD
+     		WHERE
+     			IDX=#{IDX}
+     	
+     	]]>
+     </select>
+     <update id="sample.upHit" parameterType="hashmap">
+     	<![CDATA[
+     		update
+     			tb_board
+     		set
+     			hit_cnt=hit_cnt+1
+     		where
+     			idx=#{IDX}
+     	]]>
+    
+     </update>
+    <update id="sample.modifyBoard" parameterType="hashmap">
+     	<![CDATA[
+     		update
+     			tb_board
+     		set
+     			title=#{TITLE},
+     			contents=#{CONTENTS}
+     		where
+     			idx=#{IDX}
+     	]]>
+    
+     </update>
+     <insert id="sample.writeBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+   		<![CDATA[
+	       INSERT INTO
+	           TB_BOARD(
+	           	   IDX,
+	               TITLE,
+	               CONTENTS,
+	               HIT_CNT,
+	               DEL_GB,
+	               CREA_ID)
+	           VALUES(
+	              #{IDX},
+	              #{TITLE},
+	              #{CONTENTS},
+	               0,
+	               'N',
+	               'ADMIN')
+	   ]]>
+	   </insert>
+   		<update id="sample.deleteBoard" parameterType="hashmap">
+   		<![CDATA[
+	       update
+	       		tb_board
+	       		  set del_gb='Y'
+	       			where
+	       			idx=#{IDX}
+	   ]]>
+		</update>
+		<insert id="sample.insertFile" parameterType="hashmap">
+		<![CDATA[
+			 INSERT INTO TB_FILE1
+       (
+           BOARD_IDX,
+           ORIGINAL_FILE_NAME,
+           STORED_FILE_NAME,
+           FILE_SIZE,
+           CREA_ID
+       )
+       VALUES
+       (
+           #{BOARD_IDX},
+           #{ORIGINAL_FILE_NAME},
+           #{STORED_FILE_NAME},
+           #{FILE_SIZE},
+           'ADMIN'
+       )
+		]]>
+		</insert>
+		
+		<select id="sample.selectFileList" parameterType="hashmap" resultType="hashmap">
+		   <![CDATA[
+		       SELECT
+		           IDX,
+		           ORIGINAL_FILE_NAME,
+		           ROUND(FILE_SIZE/1024) AS FILE_SIZE
+		       FROM
+		           TB_FILE1
+		       WHERE
+		           BOARD_IDX=#{IDX} AND
+		           DEL_GB='N'
+		   ]]>
+		</select>
+</mapper>

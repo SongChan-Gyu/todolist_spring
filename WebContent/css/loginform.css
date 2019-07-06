@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+body{
+	background:#8190FF;
+	
+}
+.pagetemplate{
+	width: 400px;
+	background: white;
+	display:flex;
+	flex-direction: column;
+	margin: 5rem auto 0 auto;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	
+}
+
+.id{
+	display: flex;
+}
+.id input{
+	flex:1;
+	margin : 2rem  3rem 1rem 3rem;
+	background: #F5F5F5;
+	padding: 1rem;
+	border: none;
+	outline: none;
+}
+
+.pwd{
+	display: flex;
+}
+
+.pwd input{
+	
+	flex:1;
+	margin : 0rem  3rem 1rem 3rem;
+	background: #F5F5F5;
+	padding: 1rem;
+	outline: none;
+	border: none;
+	
+}
+
+.submit{
+	display: flex;
+	
+}
+.submit .button{
+	flex:1;
+	background: #816bff;
+	margin: 0rem 3rem 1rem 3rem;
+	cursor: pointer;
+	border: none;
+	padding: 1rem;
+	color: white;
+	font-weight: 30;
+	outline: none;
+}
+
+.member{
+	display: flex;
+}
+
+.member .text{
+	margin-left: auto;
+	color: black;
+	font-size: 0.8rem;
+}
+.member .create{
+	cursor: pointer;
+	margin-left:1rem;
+	margin-right:1rem;
+	color:red;
+	font-size: 0.8rem;		
+}

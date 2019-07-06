@@ -1,0 +1,295 @@
+@charset "UTF-8";
+
+body{
+	 font-family: 'Noto Sans KR', sans-serif;
+	 margin-top: 5rem;
+}
+.top{
+	width: 700px;
+	background: #816bff;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+}
+
+.top .member{
+	margin-left: 1rem;
+	flex:0.9;
+	margin: 0;
+	color: white;
+	font-size: 0.3rem;	
+}
+
+.top .logout{
+	cursor:pointer;
+	margin-left:2rem;
+	color: white;
+	font-size:0.8rem;
+}
+.top .alarm{
+	cursor: pointer;
+	flex: 0.038;
+	display:flex;
+	position: relative;
+	background-image : url("/myapp/img/bell.png");
+	
+	}
+.notice_counter{
+	position: absolute;
+	text-align: center;
+	align-items: center;
+	top: 0rem;
+	left: 0.6rem;
+	width: 0.8rem;
+	height: 0.8rem;
+	background: #F15F5F;
+	border-radius: 100%;
+	color:white;
+	font-size: 0.7rem;	
+}
+.notice_counter .number{
+	color:white;
+}
+
+.notice_list{
+	width: 200px;
+	margin-left: 60%;
+	background : #816bff;
+	margin-top: 5rem;
+	
+}
+.notice_list ul{
+	color: white;
+	display:block;
+	font-size: 0.5rem;
+}
+
+.notice_list li{
+	display:block;
+}
+
+.arrow_box {
+	margin: 2rem 30% 2rem auto;
+	position: relative;
+	background: #816bff;
+	width: 200px;
+	padding: 0.3rem;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	z-index:10;
+	
+}
+
+
+.arrow_box ul{
+	color:white;
+	font-weight: 30;
+	
+}
+
+.pagetemplate{
+	margin-left: auto;
+	margin-right: auto;
+	width: 700px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	padding-top: 2rem;
+	
+}
+
+.pagetemplate h1{
+	text-align:center;
+	margin:0;
+	color: #816bff;
+	font-size: 3.5rem;
+	font-weight: 300;
+	
+}
+.pagetemplate .content{
+	margin-top: 2rem;
+}
+
+.toinput{
+	display: flex;
+	border-top : 1px solid #816bff;
+	padding: 1rem;
+}
+
+.toinput input{
+	flex:1;
+	font-size:1rem;
+	outline:none;
+	border:none;
+	background: transparent;
+	border-bottom: 1px solid #816bff;
+}
+
+.button{
+	flex:1;
+	font-size: 1.5rem;
+	font-weight:500;
+	color: #816bff;
+	margin: 1rem;
+	border: 1px solid #816bff;
+	display:flex;
+	justify-content: center;
+	cursor: pointer;
+	
+}
+.button:hover{
+	color:white;
+	background:#816bff;
+}
+
+.todolist{
+	display: flex;
+	padding: 1rem 0	 1rem 1rem;
+	border-top: 2px solid #816bff;
+	border-left: 2px solid #816bff;
+	border-right: 2px solid #816bff;
+	align-items: center;
+}
+
+.todolist .tick{
+	cursor: pointer;
+	margin-right: 1rem;
+}
+
+
+.todolist .todo{
+	word-break: break-all;
+	flex:1;
+	color: #816bff;	
+	cursor:pointer;
+}
+
+.todolist .edit{
+	margin-right: 1rem;
+	cursor: pointer;
+	color: #816bff;
+}
+.todolist .edit:hover{
+	color: red;
+	text-decoration: underline;
+}
+.todolist .delete{
+	margin-right: 1rem;
+	cursor: pointer;
+	color: #816bff;
+}
+
+.todolist .delete:hover{
+	color: red;
+	text-decoration: underline;
+}
+
+.pre_content{
+	font-size: 1rem;
+	font-family: 'Noto Sans KR', sans-serif;
+	
+}
+
+.todolist:nth-child(odd){
+	background: #F5F5F5;
+}
+
+.todolist:hover{
+	background: white;
+}
+
+.tododetail{
+	display: none;
+	background: white;
+}
+.detail_content{
+	font-size: 1rem;
+	margin-left :2rem;
+	padding: 1rem;
+	flex:0.7;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+.time_when{
+	flex:0.3;
+	padding:1rem;
+	margin-left: auto;
+	margin-right: 1rem;
+}
+
+
+
+
+/* modal */
+		.modal {
+			display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+		.modal .todo_title input{
+			width:80%;
+			margin : 1rem;
+			background: #F5F5F5;
+			padding: 1rem;
+			border: none;
+			outline: none;
+		} 
+		.modal .todo_content textarea{
+			font: 400 13.3333px Arial;
+			width:80%;
+			margin : 1rem;
+			background: #F5F5F5;
+			padding: 1rem;
+			border: none;
+			outline: none;
+		} 
+		.date_name{
+			font: 400 13.3333px Arial;
+			width:80%;
+			margin : 1rem 1rem 0.5rem 1rem;
+					
+		}  
+		.todo_date input{
+			width: 80%;
+			margin : 1rem;
+			background: #F5F5F5;
+			padding: 1rem;
+			border: none;
+			outline: none;
+		}
+		.modal_btn{
+			width: 30%;
+			font-size: 1.5rem;
+			font-weight:500;
+			color: #816bff;
+			margin: 1rem;
+			border: 1px solid #816bff;
+			justify-content: center;
+			cursor: pointer;
+					
+		}
+        /* Modal Content/Box */
+        .modal-content {
+        	 background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%; /* Could be more or less, depending on screen size */                           
+        }
+        /* The Close Button */
+        .close {
+        	color: #aaa;
+            float: right;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
